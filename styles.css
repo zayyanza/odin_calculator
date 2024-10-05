@@ -23,16 +23,22 @@ body {
     flex-grow: 1;
     background-color: #f6f6f6;
     border-radius: 15px;
+    min-height: 122.5px;
 }
 
 .btn-container {
     display: flex;
+    max-height: 100%;
     flex-grow: 3;
     border-radius: 15px;
     flex-direction: column;
-    /* gap: 10px; */
 }
 
 .btn-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
     flex-grow: 1;
+    padding: 8px;
 }
