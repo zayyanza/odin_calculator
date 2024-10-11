@@ -49,16 +49,26 @@ body {
     flex-grow: 1;
     height: 57px;
     border-radius: 12px;
+    background-color: purple;
 }
 
 .del-btn {
     flex-grow: 1;
     height: 57px;
     border-radius: 12px;
+    background-color: yellow;
 }
 
 .btn {
     flex-grow: 1;
     height: 57px;
     border-radius: 12px;
+}
+
+.op {
+    background-color: green;
+}
+
+.equal {
+ background-color: red;
 }
