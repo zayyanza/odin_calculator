@@ -22,7 +22,7 @@ body {
 .screen {
     flex-grow: 1;
     background-color: #f6f6f6;
-    border-radius: 15px;
+    border-radius: 12px;
     min-height: 122.5px;
 }
 
@@ -36,9 +36,29 @@ body {
 
 .btn-row {
     display: flex;
+    flex-grow: 1;
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
+    padding: 8px 0px 8px 0px;
+    max-height: 73.5px;
+    gap: 8px;
+}
+
+.clear-btn{
     flex-grow: 1;
-    padding: 8px;
+    height: 57px;
+    border-radius: 12px;
+}
+
+.del-btn {
+    flex-grow: 1;
+    height: 57px;
+    border-radius: 12px;
+}
+
+.btn {
+    flex-grow: 1;
+    height: 57px;
+    border-radius: 12px;
 }
