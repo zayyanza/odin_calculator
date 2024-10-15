@@ -1,6 +1,7 @@
 let firstNumber;
 let secondNumber;
 let operator;
+let display_value = "";
 
 function add(a, b) {
     return a + b;
@@ -37,6 +38,9 @@ function operate(firstNumber, secondNumber, operator) {
             break;
     }
 }
+
+const screen = document.querySelector(".screen-value");
+screen.textContent = "Hello";
 
 
 // let x = operate(5, 2, "/");
