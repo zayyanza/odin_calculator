@@ -20,10 +20,24 @@ body {
 }
 
 .screen {
+    display: flex;
+    flex-direction: column;
     flex-grow: 1;
+    justify-content: space-around;
+    align-items: flex-end;
     background-color: #f6f6f6;
     border-radius: 12px;
     min-height: 122.5px;
+}
+
+.screen-value {
+    padding-right: 20px;
+    font-size: 36px;
+}
+
+.LastScreen-value {
+    padding-right: 20px;
+    font-size: 20px;
 }
 
 .btn-container {

@@ -1,5 +1,5 @@
-let firstNumber;
-let secondNumber;
+let firstNumber = "5";
+let secondNumber = "6";
 let operator;
 let display_value = "";
 
@@ -39,9 +39,17 @@ function operate(firstNumber, secondNumber, operator) {
     }
 }
 
-const screen = document.querySelector(".screen-value");
-screen.textContent = "Hello";
+function appendNumber(number) {
+    CurrentScreen.textContent += number;
+}
 
+const CurrentScreen = document.querySelector(".screen-value");
+CurrentScreen.textContent = "";
 
-// let x = operate(5, 2, "/");
-// console.log(x);
+const LastScreen = document.querySelector(".LastScreen-value");
+LastScreen.textContent = "Hello";
+
+const numButton = document.querySelectorAll(".btn");
+numButton.forEach((button) => {
+    button.addEventListener("click", () => appendNumber(button.textContent))
+})
