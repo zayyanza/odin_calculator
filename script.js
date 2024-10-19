@@ -39,9 +39,19 @@ function operate(firstNumber, secondNumber, operator) {
     }
 }
 
+function clearScreen() {
+    CurrentScreen.textContent = "0";
+}
+
 function appendNumber(number) {
     CurrentScreen.textContent += number;
 }
+
+function deleteScreen() {
+    CurrentScreen.textContent = CurrentScreen.textContent.slice(0, -1);
+}
+
+
 
 const CurrentScreen = document.querySelector(".screen-value");
 CurrentScreen.textContent = "";
@@ -53,3 +63,9 @@ const numButton = document.querySelectorAll(".btn");
 numButton.forEach((button) => {
     button.addEventListener("click", () => appendNumber(button.textContent))
 })
+
+const clearButton = document.querySelector(".clear-btn");
+clearButton.addEventListener("click", () => clearScreen());
+
+const deleteButton = document.querySelector(".del-btn");
+deleteButton.addEventListener("click", () => deleteScreen());
