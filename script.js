@@ -44,22 +44,35 @@ function clearScreen() {
 }
 
 function appendNumber(number) {
+    if (CurrentScreen.textContent === "0") {
+        CurrentScreen.textContent = "";
+    }
     CurrentScreen.textContent += number;
 }
 
 function deleteScreen() {
     CurrentScreen.textContent = CurrentScreen.textContent.slice(0, -1);
+    if (CurrentScreen.textContent.toString().length === 0) {
+        CurrentScreen.textContent = "0"
+    }
+}
+
+function appendPoint() {
+    if (CurrentScreen.textContent.includes(".")) {
+        return;
+    }
+    CurrentScreen.textContent += ".";
 }
 
 
 
 const CurrentScreen = document.querySelector(".screen-value");
-CurrentScreen.textContent = "";
+CurrentScreen.textContent = "0";
 
 const LastScreen = document.querySelector(".LastScreen-value");
 LastScreen.textContent = "Hello";
 
-const numButton = document.querySelectorAll(".btn");
+const numButton = document.querySelectorAll("[class='btn']");
 numButton.forEach((button) => {
     button.addEventListener("click", () => appendNumber(button.textContent))
 })
@@ -69,3 +82,6 @@ clearButton.addEventListener("click", () => clearScreen());
 
 const deleteButton = document.querySelector(".del-btn");
 deleteButton.addEventListener("click", () => deleteScreen());
+
+const pointButton = document.querySelector(".btn.point");
+pointButton.addEventListener("click", () => appendPoint());
