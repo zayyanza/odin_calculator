@@ -64,6 +64,18 @@ function appendPoint() {
     CurrentScreen.textContent += ".";
 }
 
+function appendOperator(operator) {
+    const hasOperator = CurrentScreen.textContent.includes("+") ||
+                    CurrentScreen.textContent.includes("-") ||
+                    CurrentScreen.textContent.includes("/") ||
+                    CurrentScreen.textContent.includes("x");
+
+    if (hasOperator) {
+        return;
+    }
+    CurrentScreen.textContent += operator;
+}
+
 
 
 const CurrentScreen = document.querySelector(".screen-value");
@@ -75,7 +87,7 @@ LastScreen.textContent = "Hello";
 const numButton = document.querySelectorAll("[class='btn']");
 numButton.forEach((button) => {
     button.addEventListener("click", () => appendNumber(button.textContent))
-})
+});
 
 const clearButton = document.querySelector(".clear-btn");
 clearButton.addEventListener("click", () => clearScreen());
@@ -85,3 +97,8 @@ deleteButton.addEventListener("click", () => deleteScreen());
 
 const pointButton = document.querySelector(".btn.point");
 pointButton.addEventListener("click", () => appendPoint());
+
+const operatorButton = document.querySelectorAll("[class='btn op']");
+operatorButton.forEach((button) => {
+    button.addEventListener("click", () => appendOperator(button.textContent))
+});
