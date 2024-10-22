@@ -1,22 +1,22 @@
-let firstNumber = "5";
-let secondNumber = "6";
+let firstNumber = "";
+let secondNumber = "";
 let operator;
 let display_value = "";
 
 function add(a, b) {
-    return a + b;
+    return Number(a) + Number(b);
 }
 
 function substract(a, b) {
-    return a - b;
+    return Number(a) - Number(b);
 }
 
 function multiply(a, b) {
-    return a * b;
+    return Number(a) * Number(b);
 }
 
 function divide(a, b) {
-    return a / b;
+    return Number(a) / Number(b);
 }
 
 
@@ -28,10 +28,10 @@ function operate(firstNumber, secondNumber, operator) {
         case "-":
             return substract(firstNumber, secondNumber);
             break;
-        case "*":
+        case "×":
             return multiply(firstNumber, secondNumber);
             break;
-        case "/":
+        case "÷":
             return divide(firstNumber, secondNumber);
             break;
         default:
@@ -41,6 +41,7 @@ function operate(firstNumber, secondNumber, operator) {
 
 function clearScreen() {
     CurrentScreen.textContent = "0";
+    LastScreen.textContent = "";
 }
 
 function appendNumber(number) {
@@ -64,25 +65,32 @@ function appendPoint() {
     CurrentScreen.textContent += ".";
 }
 
-function appendOperator(operator) {
+function appendOperator(Operator) {
     const hasOperator = CurrentScreen.textContent.includes("+") ||
                     CurrentScreen.textContent.includes("-") ||
-                    CurrentScreen.textContent.includes("/") ||
-                    CurrentScreen.textContent.includes("x");
+                    CurrentScreen.textContent.includes("÷") ||
+                    CurrentScreen.textContent.includes("×");
 
     if (hasOperator) {
         return;
     }
-    CurrentScreen.textContent += operator;
+    firstNumber = CurrentScreen.textContent;
+    operator = Operator
+    CurrentScreen.textContent += Operator;
 }
 
+function equalsClick() {
+    operands = CurrentScreen.textContent.split(operator);
+    result = operate(firstNumber, operands[1], operator);
+    LastScreen.textContent = result.toString();
+}
 
 
 const CurrentScreen = document.querySelector(".screen-value");
 CurrentScreen.textContent = "0";
 
 const LastScreen = document.querySelector(".LastScreen-value");
-LastScreen.textContent = "Hello";
+LastScreen.textContent = "";
 
 const numButton = document.querySelectorAll("[class='btn']");
 numButton.forEach((button) => {
@@ -102,3 +110,6 @@ const operatorButton = document.querySelectorAll("[class='btn op']");
 operatorButton.forEach((button) => {
     button.addEventListener("click", () => appendOperator(button.textContent))
 });
+
+const equalButton = document.querySelector(".btn.equal");
+equalButton.addEventListener("click", () => equalsClick())
