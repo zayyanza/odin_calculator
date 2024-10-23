@@ -4,19 +4,23 @@ let operator;
 let display_value = "";
 
 function add(a, b) {
-    return Number(a) + Number(b);
+    result = Number(a) + Number(b);
+    return Math.round(result * 100) / 100;
 }
 
 function substract(a, b) {
-    return Number(a) - Number(b);
+    result = Number(a) - Number(b);
+    return Math.round(result * 100) / 100;
 }
 
 function multiply(a, b) {
-    return Number(a) * Number(b);
+    result = Number(a) * Number(b);
+    return Math.round(result * 100) / 100;
 }
 
 function divide(a, b) {
-    return Number(a) / Number(b);
+    result = Number(a) / Number(b);
+    return Math.round(result * 100) / 100;
 }
 
 
