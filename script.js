@@ -71,18 +71,28 @@ function appendOperator(Operator) {
                     CurrentScreen.textContent.includes("÷") ||
                     CurrentScreen.textContent.includes("×");
 
-    if (hasOperator) {
-        return;
+    if (hasOperator && CurrentScreen.textContent.length > (firstNumber.length + 3)) {
+        result = equalsClick().toString();
+        firstNumber = result;
+        operator = Operator;
+        CurrentScreen.textContent = LastScreen.textContent + " " + Operator + " ";
+    } else if (LastScreen.textContent !== "") {
+        firstNumber = LastScreen.textContent;
+        operator = Operator;
+        CurrentScreen.textContent = `${LastScreen.textContent} ${Operator} `
+    } else {
+        firstNumber = CurrentScreen.textContent;
+        operator = Operator;
+        CurrentScreen.textContent += ` ${Operator} `;
     }
-    firstNumber = CurrentScreen.textContent;
-    operator = Operator
-    CurrentScreen.textContent += Operator;
+
 }
 
 function equalsClick() {
     operands = CurrentScreen.textContent.split(operator);
     result = operate(firstNumber, operands[1], operator);
     LastScreen.textContent = result.toString();
+    return result;
 }
 
 
