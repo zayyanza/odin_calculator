@@ -59,10 +59,25 @@ function deleteScreen() {
 }
 
 function appendPoint() {
-    if (CurrentScreen.textContent.includes(".")) {
+    const hasOperator = CurrentScreen.textContent.includes("+") ||
+                    CurrentScreen.textContent.includes("-") ||
+                    CurrentScreen.textContent.includes("÷") ||
+                    CurrentScreen.textContent.includes("×");
+    if (CurrentScreen.textContent.includes(".") && !hasOperator) {
         return;
+    } else if (hasOperator) {
+        operands = CurrentScreen.textContent.split(operator);
+        if (operands[1].length <= 1) {
+            return;
+        } else if (operands[1].includes(".")) {
+            return;
+        } else {
+            CurrentScreen.textContent += ".";
+        }
+    } else {
+        CurrentScreen.textContent += ".";
     }
-    CurrentScreen.textContent += ".";
+    
 }
 
 function appendOperator(Operator) {
